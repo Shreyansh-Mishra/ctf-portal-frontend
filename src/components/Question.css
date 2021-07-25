@@ -1,0 +1,130 @@
+.question {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    color: aliceblue;
+    width: 70%;
+    height: 65%;
+    padding: 2%;
+    border-radius: 12px;
+    background-color: #272727;
+}
+
+.box-shadow-full {
+    -webkit-box-shadow: 0 0 20px rgb(174, 0, 255);
+    -moz-box-shadow: 0 0 20px rgb(174, 0, 255);
+    box-shadow: 0 0 20px rgb(174, 0, 255);
+}
+
+.image {
+    /* float: left; */
+}
+
+.text {
+    /* float: right; */
+    padding: 10% 10%;
+    font-size: 1.5vw;
+}
+
+
+
+/* #img{
+    padding: 10%;
+    width: 28vw;
+    height: 28vw;
+} */
+
+.submit {
+    /* width: auto; */
+    color: aliceblue;
+    background-color: #272727;
+    -webkit-box-shadow: 0 0 10px rgb(174, 0, 255);
+    -moz-box-shadow: 0 0 10px rgb(174, 0, 255);
+    box-shadow: 0 0 10px rgb(174, 0, 255);
+    border-radius: 10px;
+    padding: 2% 5%;
+    cursor: pointer;
+}
+
+.answer-box {
+    padding: 15px;
+    font-family: monospace;
+    border-radius: 10px;
+    width: 40%;
+    outline: none;
+}
+
+.float-layout {
+    border-radius: 12px;
+    overflow: hidden;
+    perspective: 1px;
+    float: left;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0;
+    -webkit-box-shadow: 0 0 30px rgb(174, 0, 255);
+    box-shadow: 0 0 30px rgb(174, 0, 255);
+}
+
+.card-container {
+    overflow: hidden;
+    padding: 50px 50px;
+}
+
+.card {
+    background-color: #272727;
+    color: aliceblue;
+    min-height: 100%;
+    /*replace this it in width: 100%*/
+    width: 50%;
+    padding: 2%;
+    float: right;
+}
+
+.card-title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.card-desc {
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+}
+
+/*add this it*/
+.card-image {
+    display: flex;
+}
+
+/*-------------*/
+
+div.card-image img {
+    width: 50%;
+    height: auto;
+}
+
+/* Phone Devices Query */
+@media only screen and (max-width: 37.5em) {
+    div.card-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    /*add this it*/
+    .card-image {
+        flex-direction: column;
+    }
+
+    /*----------------------*/
+
+    .card {
+        width: 100%;
+        margin-top: -4px;
+    }
+}
