@@ -10,8 +10,6 @@ export default function Login() {
         e.preventDefault()
         axios.post(`${process.env.REACT_APP_BACKEND}auth/login`,{username,password}).then(res=>{
             if(res.data.success){
-                console.log(res.data)
-                console.log(res.data.token)
                 localStorage.setItem("Authorization",res.data.token);
                 // document.cookie = `Authorization=${res.data.token};max-age=${60*60*24*7};`
                 window.location.href = "/"

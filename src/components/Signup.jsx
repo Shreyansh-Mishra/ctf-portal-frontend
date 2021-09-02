@@ -13,11 +13,16 @@ export default function Signup() {
         e.preventDefault()
         axios.post(`${process.env.REACT_APP_BACKEND}auth/signup`,{username,email,password}).then(res=>{
             if(res.data.success){
-                history.push('/login');
+                setStatus("verify");
+                // history.push('/login');
             }
-            else{
+            else if(res.data.error==="Already Registered!"){
                 setStatus(false);
             }
+            else if(res.data.error==="Invalid Organization"){
+                setStatus("Org");
+            }
+            
         })
     }
     if(localStorage.getItem("Authorization")===null){
@@ -27,6 +32,8 @@ export default function Signup() {
                     <p className="form_label">Register</p>
                     <form>
                         {!status&&<p style={{"color":"red"}}>Already Registered!</p>}
+                        {status==="Org"&&<p style={{"color":"red"}}>You need to register with Institute Email ID!</p>}
+                        {status==="verify"&&<p style={{"color":"yellow"}}>Please check your Email for verification!</p>}
                         <p><input type="text" placeholder="Username" value={username} onChange={e=>setUsername(e.target.value)} /></p>
                         <p><input type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} /></p>
                         <p><input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} /></p>

@@ -9,7 +9,6 @@ export default function Leaderboard() {
     let [isPending, setIsPending] = useState(true);
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_BACKEND}user/leaderboard`).then(res=>{
-            console.log(res);
             setUsers(res.data.leaderboard);
             setIsPending(false);
         })

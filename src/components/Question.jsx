@@ -22,10 +22,8 @@ export default function Question() {
             }
         }).then(res => {
             if(res.data.success){
-                console.log(res);
                 setQuestion(res.data)
                 setIsPending(false);
-                console.log(question);
             }
             else if(res.data.success===false && res.data.msg==="CTF Completed"){
                 setQuestion({
