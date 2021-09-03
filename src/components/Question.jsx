@@ -27,7 +27,15 @@ export default function Question() {
             }
             else if (res.data.success === false && res.data.msg === "CTF Completed") {
                 setQuestion({
-                    "question": "CTF Completed"
+                    "question": "CTF Completed",
+                    "points": null
+                });
+                setIsPending(false);
+            }
+            else if (res.data.success === false && res.data.msg === "Not Started Yet") {
+                setQuestion({
+                    "question": "Not Started Yet",
+                    "points": null
                 });
                 setIsPending(false);
             }
@@ -79,19 +87,20 @@ export default function Question() {
                         {!isPending && question.image && <img src={question.image} />}
                         <div className="card">
                             <div className="card-title">{isPending && <div>Loading...</div>}
+                                {!isPending && question.question!=="Not Started Yet" && question.question!=="CTF Completed" && "Level " + question.id}<br></br>
                                 {!isPending && question.question}</div><br></br>
-                            {!isPending && question.link && <a rel="noreferrer" href={question.link} className="submit" style={{ "padding": "10px", "textDecoration": "none" }} target="_blank">Click Here</a>}<br></br>
-                            {!isPending && question.points && <p>Points: {question.points.toFixed(2)}</p>}
+                            {!isPending && question.link && <a rel="noreferrer" href={question.link} className="submit" style={{ "padding": "10px", "textDecoration": "none" }} target="_blank">Click Here</a>}<br></br><br></br>
+                            {!isPending && question.points!==null&& <p>Points: {question.points.toFixed(2)}</p>}
                             <div className="card-desc">
                                 <center><br></br><br></br><br></br>
                                     {status[0] === true && <p style={{ "color": "green" }}>Correct Answer</p>}
                                     {status[0] === false && <p style={{ "color": "red" }}>Wrong Answer</p>}
                                     {status[0] === "Cooldown" && <p style={{ "color": "yellow" }}>You are on Cooldown! Please wait for {status[1].toFixed(2)} seconds.</p>}
                                     {status[0] === null && <p></p>}
-                                    {!isPending && question.question !== "CTF Completed" &&
+                                    {!isPending && question.question !== "CTF Completed" && question.question!=="Not Started Yet" &&
                                         <input type="text" className="answer-box" placeholder="Type your answer here..." value={answer} onChange={e => setAnswer(e.target.value)}></input>}
                                     <br></br><br></br>
-                                    {!isPending && question.question !== "CTF Completed" &&
+                                    {!isPending && question.question !== "CTF Completed" && question.question!=="Not Started Yet" &&
                                         <input type="submit" className="submit" onClick={handleSubmit}></input>}
                                 </center>
                             </div>

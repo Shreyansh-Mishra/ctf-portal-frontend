@@ -21,6 +21,7 @@ export default function Leaderboard() {
                         <tr className="heading">
                             <td><b>Rank</b></td>
                             <td><b>Username</b></td>
+                            <td><b>Level</b></td>
                             <td><b>Points</b></td>
                         </tr>
                         {users.map(user=>{

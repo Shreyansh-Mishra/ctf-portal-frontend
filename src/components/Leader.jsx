@@ -6,6 +6,7 @@ export default function Leader({user}) {
             <tr className="table-content">
                 <td>{user.rank}</td>
                 <td>{user.username}</td>
+                <td>{user.currentLevel}</td>
                 <td>{user.score.toFixed(2)}</td>
             </tr>
         </>
